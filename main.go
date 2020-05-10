@@ -15,6 +15,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	version = "dev"
+)
+
 type depSize struct {
 	name string
 	size int64
@@ -139,8 +143,9 @@ type rootOpts struct {
 func main() {
 	var opts rootOpts
 	root := cobra.Command{
-		Use:  "dep-sum",
-		Args: cobra.ExactArgs(1),
+		Use:     "dep-sum",
+		Version: version,
+		Args:    cobra.ExactArgs(1),
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			if opts.verbose {
 				logrus.SetLevel(logrus.DebugLevel)
