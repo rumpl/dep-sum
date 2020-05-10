@@ -41,6 +41,6 @@ Example, for this project a build would need to download ~10MB of dependencies.
 Total dependencies size: 10 MB
 ```
 
-# License
+## License
 
 [MIT](https://rumpl.mit-license.org/)
