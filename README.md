@@ -6,6 +6,12 @@ _Note_: This works only for projects that use go modules.
 
 **WARNING: I have no idea how the go.sum file really works, this is really an approximation**
 
+## Installation
+
+```
+go get -u github.com/rumpl/dep-sum
+```
+
 ## Usage
 
 ```
