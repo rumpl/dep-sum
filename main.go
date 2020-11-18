@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"go/build"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -102,9 +103,13 @@ func runDepSum(opts rootOpts, path string) error {
 	var total int64
 
 	depsizes := []depSize{}
+	gopath := os.Getenv("GOPATH")
+	if gopath == "" {
+		gopath = build.Default.GOPATH
+	}
 
 	for _, dep := range deps {
-		size, err := getDepSize(filepath.Join(os.Getenv("GOPATH"), "pkg", "mod", dep))
+		size, err := getDepSize(filepath.Join(gopath, "pkg", "mod", dep))
 		if err == nil {
 			depsizes = append(depsizes, depSize{
 				name: dep,
